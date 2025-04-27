@@ -1,197 +1,215 @@
 /* Reset CSS */
-/* 1. Use a more-intuitive box-sizing model */
 *, *::before, *::after {
     box-sizing: border-box;
   }
   
-  /* 2. Remove default margin */
   * {
     margin: 0;
   }
   
-  /* 3. Enable keyword animations */
   @media (prefers-reduced-motion: no-preference) {
     html {
       interpolate-size: allow-keywords;
     }
   }
   
-  body {
-    /* 4. Add accessible line-height */
-    line-height: 1.5;
-    /* 5. Improve text rendering */
-    -webkit-font-smoothing: antialiased;
+  html {
+    font-size: 62.5%; /* 1rem = 10px */
   }
   
-  /* 6. Improve media defaults */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Roboto", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    color: #333;
+    font-size: 1.6rem; /* 16px */
+  }
+  
   img, picture, video, canvas, svg {
     display: block;
     max-width: 100%;
   }
   
-  /* 7. Inherit fonts for form controls */
   input, button, textarea, select {
     font: inherit;
   }
   
-  /* 8. Avoid text overflows */
   p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
   }
   
-  /* 9. Improve line wrapping */
   p {
     text-wrap: pretty;
   }
+  
   h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
   }
   
-  /*
-    10. Create a root stacking context
-  */
   #root, #__next {
     isolation: isolate;
   }
-
-
-/* Common setting */
-
-body {
-    font-family: "Roboto", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-
-    color: #333;
-}
-
-.logged-out {
+  
+  /* Common settings */
+  .logged-out, .logged-in {
+    width: 100%;
+  }
+  
+  .logged-out {
     display: none;
-    width: 100%;
-}
-
-.logged-in {
+  }
+  
+  .logged-in {
     display: block;
-    width: 100%;
-}
-
-.active {
+  }
+  
+  .active {
     background-color: #444;
-}
-
-/* Nav bar */
-nav {
-  background-color: #333;
-  color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-
-  width: 100%;
-  height: 60px;
-}
-
-nav > * {
-  margin: 0 20px;
-}
-
-nav .logo {
-  font-size: 24px;
-}
-
-nav .logo a {
-  text-decoration: none;
-  color: white;
-}
-
-nav .nav-list {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  gap: 20px;
-}
-
-nav .nav-list a {
-  display: inline;
-  text-decoration: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-nav .user-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-nav .user-info {
-  display: flex;
-  align-items: center;
-  color: white;
-  font-size: 16px;
-  justify-content: center;
-
-  gap: 10px;
-  margin: 10px;
-}
-
-nav .user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-}
-
-nav .dropdown {
-  position: absolute;
-  right:0;
-  top: 100%; /* Adjust this value to position the dropdown below the user menu */
-  display: flex;
-  flex-direction: column;
-  display: none;
-  border-left: #333 1px solid;
-  border-bottom: #333 1px solid;
-  border-right: #333 1px solid;
-
-}
-
-nav .dropdown a {
-  padding: 10px;
-  color: #444;
-  text-decoration: none;
-}
-
-nav .dropdown a:hover {
-  color: white;
-  background-color: #444;
-}
-
-.whole-body {
+  }
+  
+  /* Nav bar */
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 6rem;
+    z-index: 100;
+  }
+  
+  nav > * {
+    margin: 0 2rem;
+  }
+  
+  .logo {
+    font-size: 2.4rem;
+  }
+  
+  .logo a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav-list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+  }
+  
+  nav .user-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  nav .user-info {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.6rem;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+  }
+  
+  nav .user-avatar {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+  
+  nav .dropdown {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    display: none;
+    background-color: white;
+    border: 0.1rem solid #333;
+    border-top: none;
+    min-width: 15rem;
+  }
+  
+  nav .dropdown a {
+    padding: 1rem;
+    color: #444;
+    text-decoration: none;
+    font-size: 1.4rem;
+  }
+  
+  nav .dropdown a:hover {
+    color: white;
+    background-color: #444;
+  }
+  
+  /* Show dropdown on hover */
+  .user-menu:hover .dropdown {
+    display: flex;
+  }
+  
+  .whole-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 60px;
-    min-height: calc(100vh - 60px);
+    padding-top: 6rem;
+    min-height: calc(100vh - 6rem);
     width: 100%;
-}
-
-/* footer */
-footer {
+  }
+  
+  /* Footer */
+  footer {
     background-color: #333;
     color: white;
-    padding: 10px;
+    padding: 1rem;
     text-align: center;
     width: 100%;
-    bottom: 0;
-}
-
-footer a {
+    font-size: 1.4rem;
+  }
+  
+  footer a {
     color: white;
     text-decoration: none;
+  }
+  
+  /* Footer links (optional) */
+  .footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .footer-links a {
+    font-size: 1.4rem;
+  }
+
+  /* RESPONSIVENESS */
+@media (max-width: 768px) {
+    .nav-list{
+        display: none;
+    }
 }
 
+@media (max-width: 480px) {
+}
+
+  
