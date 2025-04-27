@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/common.css" />
+    <link rel="stylesheet" href="./assets/css/auth.css" />
+  </head>
+  <body>
+    <!-- nav -->
+    <nav>
+      <div class="logo">
+        <a href="dashboard.html"><h1>Mentor Match</h1></a>
+      </div>
+
+      <div class="nav-list">
+        <a href="dashboard.html">Mentor Dashboard</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="user-menu">
+        <!-- if logged in: ava + dropdown -->
+        <div class="logged-out">
+          <div class="user-info">
+            <img
+              src="./assets/images/user.png"
+              alt="User Avatar"
+              class="user-avatar"
+            />
+            <span class="user-name">Name</span>
+          </div>
+
+          <!-- dropdown menu -->
+          <div class="dropdown">
+            <a href="profile.html">Profile</a>
+            <a href="#">Logout</a>
+          </div>
+        </div>
+
+        <!-- if logged out: sign up / sign in -->
+        <div class="logged-in">
+          <a class="active" href="auth.html">Sign In / Sign Up</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- body -->
+    <div class="whole-body">
+      <!-- Container -->
+      <div class="container">
+        <div class="options">
+          <p class="active-option" id="sign-up-opt">Sign Up</p>
+          <p id="sign-in-opt">Sign In</p>
+        </div>
+
+        <!-- Sign up -->
+        <div id="sign-up-form"  class="form ">
+          <h2>Sign up</h2>
+
+          <form action="">
+            <div class="input-field">
+              <div class="input-role">
+                <label for="role">I am a:</label>
+              </div>
+              <div class="input-role">
+                <input type="radio" name="role" id="mentor" required/>
+                <label for="mentor">Mentor</label>
+              </div>
+
+              <div class="input-role">
+                <input type="radio" name="role" id="mentee" required/>
+                <label for="mentee">Mentee</label>
+              </div>
+            </div>
+            <div class="input-field">
+              <label for="name">Name</label><br />
+              <input
+                type="text"
+                name="name"
+                id="name"
+                required
+                placeholder="John Doe"
+              />
+            </div>
+            <div class="input-field">
+              <label for="email">Email</label><br>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                placeholder="johndoe@gmail.com"
+              />
+            </div>
+
+            <div class="input-field">
+              <label for="password">Password</label><br>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                required
+                placeholder="Johndoe1234"
+              />
+            </div>
+
+            <div class="input-field">
+              <label for="confirm-password">Confirm Password</label><br>
+              <input
+                type="password"
+                name="confirm-password"
+                id="confirm-password"
+                required
+                placeholder="Johndoe1234"
+              />
+            </div>
+
+            <div class="input-field">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">I agree to the <a href="">terms and conditions</a></label>
+            </div>
+            <button type="submit" class="btns">Sign up</button>
+          </form>
+        </div>
+
+        <!-- Sign in -->
+        <div id="sign-in-form" class="form hidden">
+          <h2>Sign In</h2>
+
+          <form class="" action="">
+
+            <div class="input-field">
+              <label for="email">Email</label><br>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                placeholder="johndoe@gmail.com"
+              />
+            </div>
+
+            <div class="input-field">
+              <label for="password">Password</label><br>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                required
+                placeholder="Johndoe1234"
+              />
+            </div>
+
+            <button type="submit" class="btns">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <p>&copy; 2025 Mentor Match. All rights reserved.</p>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
+      <a href="#">Contact Us</a>
+    </footer>
+
+    <script src="./assets/js/auth.js"></script>
+  </body>
+</html>

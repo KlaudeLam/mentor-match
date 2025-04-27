@@ -12,7 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/css/common.css" />
-    <link rel="stylesheet" href="./assets/css/profile.css" />
+    <link rel="stylesheet" href="./assets/css/profileedit.css" />
   </head>
   <body>
     <!-- nav -->
@@ -58,6 +58,12 @@
         <!-- photo -->
         <div id="left">
           <img src="./assets/images/user.png" alt="User Avatar" class="user-avatar" />
+          <div class="input-field">
+            <label for="photo">Profile Photo</label>
+            <input type="file" id="photo" name="photo" accept="image/*" style="display: none;"/>
+            <p class="note">*Please upload a clear photo of yourself.</p>
+
+          </div>
         </div>
         
         <!-- Other info -->
@@ -65,46 +71,58 @@
           <!-- name -->
           <label for="name">Name</label>
           <div class="input-field">
-            <div>answer</div>
+            <input type="text" id="name" name="name" required />
           </div>
 
           <!-- Location -->
           <label for="location">Location</label>
           <div class="input-field">
-            <div>answer</div>
+            <input type="text" id="location" name="location" required />
           </div>
 
           <!-- Interest -->
           <label for="interests">Interests</label>
           <div class="input-field">
-            <div>Hardworking</div>
-            <div>Hardworking</div>
-            <div>Hardworking</div>
+            <input type="text" id="interests" name="interests"/>
+            <button id="add-interests" class="add-btns" href="">Add</button>
           </div>
 
           <!-- Skills -->
           <label for="skills">Skills</label>
 
           <div class="input-field">
-            <div>Hardworking</div>
-            <div>Hardworking</div>
-            <div>Hardworking</div>
+            <input type="text" id="skills" name="skills"/>
+            <button id="add-skills" class="add-btns" href="">Add</button>
           </div>
 
           <!-- Availability -->
           <label for="availability">Availability</label><br />
           <div class="input-field">
-            <div>Hardworking</div>
-            <div>Hardworking</div>
-            <div>Hardworking</div>
+            <div class="options">
+              <input type="checkbox" name="availability" id="weekdays" value="weekdays">
+              <label for="weekdays">Weekdays</label><br>
+            </div>
+            <div class="options">
+              <input type="checkbox" name="availability" id="weekend" value="weekend">
+              <label for="weekend">Weekend</label><br>
+            </div>
+            <div class="options">
+              <input type="checkbox" name="availability" id="morning" value="morning">
+              <label for="morning">Morning</label><br>
+            </div>
+            <div class="options">
+              <input type="checkbox" name="availability" id="afternoon" value="afternoon">
+              <label for="afternoon">Afternoon</label><br>
+            </div>
+            <div class="options">
+              <input type="checkbox" name="availability" id="evening" value="evening">
+              <label for="evening">Evening</label><br>
+            </div>
           </div>
 
-          <!-- Connections: pagination-->
-          <label for="connections">Your Connections</label><br />
-          <div class="input-field">
-            <div>Hardworking</div>
-            <div>Hardworking</div>
-            <div>Hardworking</div>
+          <div class="btns">
+            <button>Cancel</button>
+            <button type="submit">Save</button>
           </div>
         </div>
       </form>

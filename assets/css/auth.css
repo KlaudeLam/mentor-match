@@ -1,0 +1,153 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 25%;
+    min-width: 40rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 0.5rem 1.5rem;
+    border-radius: 0.3rem;
+    margin: 8rem 0;
+}
+
+.container >* {
+    width: 100%;
+}
+
+.options {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.options > p {
+    font-size: 1.6rem;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+}
+.options > p:first-child {
+    border-radius: 0.3rem 0 0 0;
+}
+.options > p:last-child {
+    border-radius: 0 0.3rem 0 0;
+}
+
+.options > p:hover {
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+}
+
+.active-option {
+    background-color: #444;
+    color: white;
+}
+
+.options > p:hover:not(.active-option) {
+    background-color: #666;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0 0 0;
+}
+
+.hidden {
+    display: none;
+}
+
+form {
+    width:100%;
+    padding: 2rem;
+}
+
+label {
+    font-size: 1.6rem;
+    font-weight: 300;
+}
+input {
+    margin: 0.8rem 0;
+}
+
+.input-field {
+    margin: 0 0 2rem 0;
+}
+
+.input-field a {
+    font-size: 1.6rem;
+    color: #444;
+    text-decoration: none;
+    font-weight: 400;
+    text-align: right;
+}
+
+.input-role {
+    display: inline-block;
+    margin: 0 2rem 0 0;
+}
+input[type="text"],input[type="email"],input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    font-size: 1.6rem;
+}
+input[type="text"],input[type="email"]:focus,input[type="password"]:focus {
+    outline: none;
+}
+
+.btns {
+    background-color: #444;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.btns:hover {
+    background-color: #333;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+    .options > p {
+        font-size: 1.4rem;
+    }
+    label {
+        font-size: 1.4rem;
+    }
+    input[type="text"],input[type="email"],input[type="password"] {
+        font-size: 1.4rem;
+    }
+    .btns {
+        font-size: 1.4rem;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+    .options > p {
+        font-size: 1.2rem;
+    }
+    label {
+        font-size: 1.2rem;
+    }
+    input[type="text"],input[type="email"],input[type="password"] {
+        font-size: 1.2rem;
+    }
+    .btns {
+        font-size: 1.2rem;
+    }
+}
