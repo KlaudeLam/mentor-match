@@ -99,14 +99,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
   onAuthStateChanged(auth, async (user) => {
     const meta = getRouteMeta();
     if (user) {
-      // if (meta?.requireGuest) {
-      //   // alert("You have already logged in");
-      //   window.location.href = "dashboard.html";
-      // }
       updateLocalStorage();
       loggedInMode();
       userData = user;
       if (typeof userReadyCallback === "function") userReadyCallback(userData);
+      // if (meta?.requireGuest) {
+      //   // alert("You have already logged in");
+      //   window.location.href = "dashboard.html";
+      // }
     } else {
       // if (meta?.requireAuth) {
       //   // alert("Please log in first");
@@ -119,5 +119,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
   document.getElementById("logout-btn").addEventListener("click", (e) => {
     e.preventDefault();
     logOut();
+    window.location.href = "dashboard.html";
   });
 });
