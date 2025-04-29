@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
       try {
         await updateDoc(doc(db, "users", auth.currentUser.uid), data);
 
-        alert("Update successfully!");
+        // alert("Update successfully!");
         window.location.href = "profile.html";
       } catch (error) {
         const errorCode = error.code;

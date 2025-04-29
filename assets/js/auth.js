@@ -12,7 +12,7 @@ import {
 export const logOut = async () => {
   try {
     await signOut(auth);
-    alert("Sign out successfully")
+    // alert("Sign out successfully")
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
           });
 
           // alert and redirect
-          alert("Sign up successful!");
+          // alert("Sign up successful!");
           window.location.href = "profileedit.html";
         } catch (error) {
           const errorCode = error.code;
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
           // alert and redirect
-          alert("Sign in successful!");
+          // alert("Sign in successful!");
           window.location.href = "dashboard.html";
         } catch (error) {
           const errorCode = error.code;
