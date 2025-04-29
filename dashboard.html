@@ -24,21 +24,22 @@
             
         <div class="user-menu">
             <!-- if logged in: ava + dropdown -->
-            <div class="logged-out">
+            <div class="logged-in hidden">
                 <div class="user-info">
                     <img src="./assets/images/user.png" alt="User Avatar" class="user-avatar">
-                    <span class="user-name">Name</span>
+                    <span class="username">Name</span>
                 </div>
 
                 <!-- dropdown menu -->
                 <div class="dropdown">
-                    <a href="profile.html">Profile</a>
+                    <a href="profile.html">View Profile</a>
+                    <a href="profileedit.html">Edit Profile</a>
                     <a href="#">Logout</a>
                 </div>
             </div>
 
             <!-- if logged out: sign up / sign in -->
-            <div class="logged-in">
+            <div class="logged-out">
                 <a href="auth.html">Sign In / Sign Up</a>
             </div>
         </div>  
@@ -47,10 +48,10 @@
     <!-- body -->
     <div class="whole-body">
         <!-- logged in: mentor appeared -->
-        <div class="logged-in">
+        <div class="logged-in hidden">
             <!-- banner -->
             <div class="banner">
-                <h1>Welcome back, [Name]!</h1>
+                <h1>Welcome back, <span class="username"></span>!</h1>
                 <p>Here you can manage your mentoring sessions, view your mentees, and more.</p>
             </div>
 
@@ -171,6 +172,8 @@
         <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
     </footer>
 
-    <script src="./assets/js/dashboard.js"></script>
+    <script type="module" src="./assets/js/common.js"></script>
+    <script type="module" src="./assets/js/dashboard.js"></script>
+
 </body>
 </html>

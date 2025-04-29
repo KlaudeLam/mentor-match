@@ -28,7 +28,7 @@
 
       <div class="user-menu">
         <!-- if logged in: ava + dropdown -->
-        <div class="logged-out">
+        <div class="logged-in hidden">
           <div class="user-info">
             <img
               src="./assets/images/user.png"
@@ -46,7 +46,7 @@
         </div>
 
         <!-- if logged out: sign up / sign in -->
-        <div class="logged-in">
+        <div class="logged-out">
           <a class="active" href="auth.html">Sign In / Sign Up</a>
         </div>
       </div>
@@ -57,12 +57,12 @@
       <!-- Container -->
       <div class="container">
         <div class="options">
-          <p class="active-option" id="sign-up-opt">Sign Up</p>
-          <p id="sign-in-opt">Sign In</p>
+          <p class="active-option" id="signup-opt">Sign Up</p>
+          <p id="signin-opt">Sign In</p>
         </div>
 
         <!-- Sign up -->
-        <div id="sign-up-form"  class="form ">
+        <div id="signup-form"  class="form ">
           <h2>Sign up</h2>
 
           <form action="">
@@ -71,12 +71,12 @@
                 <label for="role">I am a:</label>
               </div>
               <div class="input-role">
-                <input type="radio" name="role" id="mentor" required/>
+                <input type="radio" name="role" id="mentor" value="mentor" required/>
                 <label for="mentor">Mentor</label>
               </div>
 
               <div class="input-role">
-                <input type="radio" name="role" id="mentee" required/>
+                <input type="radio" name="role" id="mentee" value="mentee" required/>
                 <label for="mentee">Mentee</label>
               </div>
             </div>
@@ -91,22 +91,22 @@
               />
             </div>
             <div class="input-field">
-              <label for="email">Email</label><br>
+              <label for="signup-email">Email</label><br>
               <input
                 type="email"
-                name="email"
-                id="email"
+                name="signup-email"
+                id="signup-email"
                 required
                 placeholder="johndoe@gmail.com"
               />
             </div>
 
             <div class="input-field">
-              <label for="password">Password</label><br>
+              <label for="signup-password">Password</label><br>
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="signup-password"
+                id="signup-password"
                 required
                 placeholder="Johndoe1234"
               />
@@ -132,28 +132,28 @@
         </div>
 
         <!-- Sign in -->
-        <div id="sign-in-form" class="form hidden">
+        <div id="signin-form" class="form hidden">
           <h2>Sign In</h2>
 
           <form class="" action="">
 
             <div class="input-field">
-              <label for="email">Email</label><br>
+              <label for="signin-email">Email</label><br>
               <input
                 type="email"
-                name="email"
-                id="email"
+                name="signin-email"
+                id="signin-email"
                 required
                 placeholder="johndoe@gmail.com"
               />
             </div>
 
             <div class="input-field">
-              <label for="password">Password</label><br>
+              <label for="signin-password">Password</label><br>
               <input
                 type="password"
-                name="password"
-                id="password"
+                name="signin-password"
+                id="signin-password"
                 required
                 placeholder="Johndoe1234"
               />
@@ -172,6 +172,10 @@
       <a href="#">Contact Us</a>
     </footer>
 
-    <script src="./assets/js/auth.js"></script>
+    <script type="module" src="./assets/js/auth.js"></script>
+    <script type="module" src="./assets/js/firebase.js"></script>
+    <script type="module" src="./assets/js/common.js"></script>
+
+
   </body>
 </html>
