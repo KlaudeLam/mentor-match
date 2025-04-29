@@ -56,15 +56,12 @@
   /* Common settings */
   .logged-out, .logged-in {
     width: 100%;
+    display:block;
   }
-  
-  .logged-out {
+
+  .hidden {
     display: none;
-  }
-  
-  .logged-in {
-    display: block;
-  }
+}
   
   .active {
     background-color: #444;
@@ -110,6 +107,10 @@
     padding: 1rem 2rem;
     border-radius: 0.5rem;
     font-size: 1.6rem;
+  }
+  
+  nav .dropdown a {
+    border-radius: 0;
   }
   
   nav .user-menu {
