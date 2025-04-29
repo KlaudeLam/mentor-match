@@ -31,10 +31,10 @@ Mentor Match aims to foster meaningful and personalized connections between ment
 ## Set Up Instruction
 
 1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-username/mentor-match.git
-   cd mentor-match
-
+```bash
+git clone https://github.com/your-username/mentor-match.git
+cd mentor-match
+```
 2. **Install Live Server (if needed)**
 You can use VSCode's Live Server extension or any local HTTP server.
 
