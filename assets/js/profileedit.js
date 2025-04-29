@@ -98,8 +98,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
   };
 
-  // Press delete capsule
-
   // Cancel
   const cancel = () => {
     const cancelBtn = document.getElementById("cancel-btn");

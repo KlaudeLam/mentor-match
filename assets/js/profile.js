@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         );
     });
   };
+  
   onUserReady(()=>{
     interests = JSON.parse(localStorage.getItem("interests"));
     skills = JSON.parse(localStorage.getItem("skills"));

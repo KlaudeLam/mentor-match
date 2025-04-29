@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
   onAuthStateChanged(auth, async (user) => {
     const meta = getRouteMeta();
     if (user) {
-      updateLocalStorage();
+      await updateLocalStorage();
       loggedInMode();
       userData = user;
       if (typeof userReadyCallback === "function") userReadyCallback(userData);
