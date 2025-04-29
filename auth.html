@@ -17,40 +17,35 @@
   <body>
     <!-- nav -->
     <nav>
-      <div class="logo">
-        <a href="dashboard.html"><h1>Mentor Match</h1></a>
-      </div>
+      <div class="logo"><a href="dashboard.html"><h1>Mentor Match</h1></a></div>
 
       <div class="nav-list">
-        <a href="dashboard.html">Mentor Dashboard</a>
-        <a href="#">Contact</a>
+          <a class="active" href="#">Mentor Dashboard</a>
+          <a href="#">Contact</a>
       </div>
-
+          
       <div class="user-menu">
-        <!-- if logged in: ava + dropdown -->
-        <div class="logged-in hidden">
-          <div class="user-info">
-            <img
-              src="./assets/images/user.png"
-              alt="User Avatar"
-              class="user-avatar"
-            />
-            <span class="user-name">Name</span>
+          <!-- if logged in: ava + dropdown -->
+          <div class="logged-in hidden">
+              <div class="user-info">
+                  <img alt="User Avatar" id="user-avatar">
+                  <span class="username">Name</span>
+              </div>
+
+              <!-- dropdown menu -->
+              <div class="dropdown">
+                  <a href="profile.html">View Profile</a>
+                  <a href="profileedit.html">Edit Profile</a>
+                  <a id="logout-btn" href="#">Logout</a>
+              </div>
           </div>
 
-          <!-- dropdown menu -->
-          <div class="dropdown">
-            <a href="profile.html">Profile</a>
-            <a href="#">Logout</a>
+          <!-- if logged out: sign up / sign in -->
+          <div class="logged-out">
+              <a href="auth.html">Sign In / Sign Up</a>
           </div>
-        </div>
-
-        <!-- if logged out: sign up / sign in -->
-        <div class="logged-out">
-          <a class="active" href="auth.html">Sign In / Sign Up</a>
-        </div>
-      </div>
-    </nav>
+      </div>  
+  </nav>
 
     <!-- body -->
     <div class="whole-body">
@@ -171,10 +166,9 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
       <a href="#">Contact Us</a>
     </footer>
-
-    <script type="module" src="./assets/js/auth.js"></script>
-    <script type="module" src="./assets/js/firebase.js"></script>
+    
     <script type="module" src="./assets/js/common.js"></script>
+    <script type="module" src="./assets/js/auth.js"></script>
 
 
   </body>

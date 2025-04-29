@@ -17,55 +17,50 @@
   <body>
     <!-- nav -->
     <nav>
-      <div class="logo">
-        <a href="dashboard.html"><h1>Mentor Match</h1></a>
-      </div>
+      <div class="logo"><a href="dashboard.html"><h1>Mentor Match</h1></a></div>
 
       <div class="nav-list">
-        <a href="dashboard.html">Mentor Dashboard</a>
-        <a href="#">Contact</a>
+          <a class="active" href="#">Mentor Dashboard</a>
+          <a href="#">Contact</a>
       </div>
-
+          
       <div class="user-menu">
-        <!-- if logged in: ava + dropdown -->
-        <div class="logged-in">
-          <div class="user-info">
-            <img
-              src="./assets/images/user.png"
-              alt="User Avatar"
-              class="user-avatar"
-            />
-            <span class="user-name">Name</span>
+          <!-- if logged in: ava + dropdown -->
+          <div class="logged-in hidden">
+              <div class="user-info">
+                  <img alt="User Avatar" id="user-avatar">
+                  <span class="username">Name</span>
+              </div>
+
+              <!-- dropdown menu -->
+              <div class="dropdown">
+                  <a href="profile.html">View Profile</a>
+                  <a href="profileedit.html">Edit Profile</a>
+                  <a id="logout-btn" href="#">Logout</a>
+              </div>
           </div>
 
-          <!-- dropdown menu -->
-          <div class="dropdown">
-            <a href="profile.html">Profile</a>
-            <a href="#">Logout</a>
+          <!-- if logged out: sign up / sign in -->
+          <div class="logged-out">
+              <a href="auth.html">Sign In / Sign Up</a>
           </div>
-        </div>
-
-        <!-- if logged out: sign up / sign in -->
-        <div class="logged-out hidden">
-          <a href="auth.html">Sign In / Sign Up</a>
-        </div>
-      </div>
-    </nav>
+      </div>  
+  </nav>
 
     <!-- body -->
     <div class="whole-body">
       <div id="container">
         <!-- photo -->
         <div id="left">
-          <img src="./assets/images/user.png" alt="User Avatar" class="user-avatar" />
+          <img id="img-preview" src="./assets/images/user.png" alt="User Avatar" class="user-avatar" />
 
           <!-- name -->
           <div id="info" class="input-field">
             <div id="role-name">
-              <div id="info-role"></div>
-              <div id="info-name"></div>  
+              <div id="role"></div>
+              <div id="name"></div>  
             </div>
-            <div id="info-bio"></div>
+            <div id="bio"></div>
           </div>
         </div>
 
@@ -74,26 +69,26 @@
 
           <!-- Location -->
           <label for="location">Location</label>
-          <div class="input-field" id="info-location"></div>
+          <div class="input-field" id="location"></div>
 
           <!-- Interest -->
           <label for="interests">Interests</label>
-          <div id="info-interests" class="input-field">
+          <div id="interests" class="input-field">
           </div>
 
           <!-- Skills -->
           <label for="skills">Skills</label>
-          <div id="info-skills" class="input-field">
+          <div id="skills" class="input-field">
           </div>
 
           <!-- Availability -->
           <label for="availability">Availability</label><br />
-          <div id="info-availability" class="input-field">
+          <div id="availability" class="input-field">
           </div>
 
           <!-- Connections: pagination-->
           <label for="connections">Your Connections</label><br />
-          <div id="info-connections" class="input-field">
+          <div id="connections" class="input-field">
           </div>
         </div>
       </div>
@@ -105,6 +100,7 @@
       <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
     </footer>
 
+    <script type="module" src="./assets/js/common.js"></script>
     <script type="module" src="./assets/js/profile.js"></script>
   </body>
 </html>

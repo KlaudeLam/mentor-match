@@ -130,10 +130,12 @@
     margin: 1rem;
   }
   
-  nav .user-avatar {
+  #user-avatar {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
   }
   
   nav .dropdown {

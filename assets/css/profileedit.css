@@ -140,7 +140,7 @@ input[type="text"]:focus {
   margin: 4rem 0 0;
 }
 
-.btns button, #photo-btn {
+.btns button, #photo-btn, #del-acc-btn {
   background-color: #333;
   color: white;
   padding: 0.4rem 1.3rem;
@@ -150,7 +150,7 @@ input[type="text"]:focus {
   font-size: 1.3rem;
 }
 
-.btns button:hover, #photo-btn:hover {
+.btns button:hover, #photo-btn:hover, #del-acc-btn:hover {
   background-color: #444;
 }
 
@@ -167,6 +167,56 @@ input[type="text"]:focus {
   min-width: 6rem;
   font-size: small;
   text-align: center;
+}
+
+/* Popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Popup box */
+.popup-box {
+  background: #fff;
+  padding: 3.5rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 90%;
+  max-width: 40rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.popup-box h3 {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.popup-box .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.popup-box button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+#unconfirm-btn {
+  background-color: #ccc;
+}
+
+#confirm-btn {
+  background-color: #333;
+  color: #fff;
 }
 
 @media (max-width: 768px) {

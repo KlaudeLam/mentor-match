@@ -2,9 +2,10 @@ import { auth, db } from "./firebase.js";
 import {
   updateDoc,
   doc,
-  getDoc,
+  deleteDoc,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { onAuthStateChanged, deleteUser } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import { onUserReady } from "./common.js";
 
 document.addEventListener("DOMContentLoaded", (e) => {
   e.preventDefault();
@@ -13,28 +14,10 @@ document.addEventListener("DOMContentLoaded", (e) => {
     skills,
     availability = [];
   let addableLists = {};
-  // Fetch info
-  const updateLocalStorage = async () => {
-    try {
-      const snapshot = await getDoc(doc(db, "users", auth.currentUser.uid));
-      const data = snapshot.data();
-
-      // Put data in local storage
-      localStorage.clear();
-      localStorage.setItem("email", data.email);
-      localStorage.setItem("name", data.name);
-      localStorage.setItem("role", data.role);
-      localStorage.setItem("bio", data.bio);
-      localStorage.setItem("location", data.location);
-      localStorage.setItem("interests", JSON.stringify(data.interests));
-      localStorage.setItem("skills", JSON.stringify(data.skills));
-      localStorage.setItem("availability", JSON.stringify(data.availability));
-    } catch (error) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage);
-    }
-  };
+  let file;
+  let imgURL = "";
+  const cloudName = "diib6xxxh";
+  const preset = "users_preset";
 
   const initiate = () => {
     document.getElementById("name").value = localStorage.getItem("name");
@@ -42,6 +25,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
     document.getElementById("location").value =
       localStorage.getItem("location");
 
+    document.getElementById("img-preview").src = localStorage.getItem("img");
     render("interests");
     render("skills");
 
@@ -68,27 +52,29 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   // Add pics and preview
   const addPic = () => {
-    document.getElementById("photo").addEventListener("change", function(event) {
-      const file = event.target.files[0]; 
-    
-      if (file) {
-        const reader = new FileReader();
-    
-        reader.onload = function(e) {
-          const imagePreview = document.getElementById("img-preview");
+    document
+      .getElementById("photo")
+      .addEventListener("change", function (event) {
+        file = event.target.files[0];
 
-          // Set the image source to the file
-          imagePreview.src = e.target.result; 
+        if (file) {
+          const reader = new FileReader();
 
-          // Make the image visible
-          imagePreview.style.display = "block"; 
-        };
-        
-        // Read the image file as a data URL
-        reader.readAsDataURL(file); 
-      }
-    });
-  }
+          reader.onload = function (e) {
+            const imagePreview = document.getElementById("img-preview");
+
+            // Set the image source to the file
+            imagePreview.src = e.target.result;
+
+            // Make the image visible
+            imagePreview.style.display = "block";
+          };
+
+          // Read the image file as a data URL
+          reader.readAsDataURL(file);
+        }
+      });
+  };
 
   // Press add to save info
   const addCapsule = () => {
@@ -99,7 +85,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         e.preventDefault();
         const type = btn.id.replace("add-", "");
         const newVal = document.getElementById(type).value;
-
+        if (!newVal.length) return;
         // add to array
         addableLists[type].push(newVal);
 
@@ -119,15 +105,44 @@ document.addEventListener("DOMContentLoaded", (e) => {
     const cancelBtn = document.getElementById("cancel-btn");
     cancelBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      window.location.href = "./profile.js";
+      window.location.href = "profile.html";
     });
   };
 
+  // Upoad to Cloudinary
+  const uploadToCloudinary = async (file) => {
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", preset);
+    // Upload to users/ folder in Cloudinary
+    formData.append("folder", "users");
+
+    const res = await fetch(url, {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await res.json();
+    return data.secure_url; // Return image URL
+  };
+
   // Save info
-  const save = () => {
+  const save = async () => {
     const saveBtn = document.getElementById("save-btn");
     saveBtn.addEventListener("click", async (e) => {
       e.preventDefault();
+
+      if (file) {
+        try {
+          imgURL = await uploadToCloudinary(file);
+        } catch (error) {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        }
+      }
 
       const data = {
         name: document.getElementById("name").value,
@@ -138,6 +153,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
         availability: [
           ...document.querySelectorAll('input[name="availability"]:checked'),
         ].map((checkbox) => checkbox.value),
+        img: imgURL ? imgURL : localStorage.getItem("img"),
       };
 
       try {
@@ -153,29 +169,61 @@ document.addEventListener("DOMContentLoaded", (e) => {
     });
   };
 
+  // Delete account confirmation
+  const showPopup = () => {
+    document.getElementById("popup").style.display = "flex";
+  };
+  const hidePopup = () => {
+    document.getElementById("popup").style.display = "none";
+  };
+
+
   //  Delete account
-  const deleteAccount = () => {};
+  const deleteAccount = async () => {
+    document
+      .getElementById("del-acc-btn")
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
+        showPopup();
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      updateLocalStorage();
+        document
+          .getElementById("unconfirm-btn")
+          .addEventListener("click", (e) => {
+            e.preventDefault();
+            hidePopup();
+          });
 
-      // Fill out the information
-      interests = JSON.parse(localStorage.getItem("interests"));
-      skills = JSON.parse(localStorage.getItem("skills"));
-      availability = JSON.parse(localStorage.getItem("availability"));
+        document.getElementById("confirm-btn").addEventListener("click", async (e) => {
+            e.preventDefault();
+            // clear firestore
+            try {
+              await deleteDoc(doc(db, "users", auth.currentUser.uid));
+              await deleteUser(auth.currentUser);
+              localStorage.clear();
+              hidePopup();
+              window.location.href = "dashboard.html";
+            } catch (error) {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              alert(errorMessage);
+            }
+          });
+      });
+  };
 
-      addableLists = { skills, interests };
+  onUserReady(()=>{
+    // Fill out the information
+    interests = JSON.parse(localStorage.getItem("interests"));
+    skills = JSON.parse(localStorage.getItem("skills"));
+    availability = JSON.parse(localStorage.getItem("availability"));
 
-      initiate();
-      addPic();
-      addCapsule();
-      cancel();
-      save();
-      // deleteAccount();
-    } else {
-      // Not logged in, maybe redirect to login
-      window.location.href = "signin.html";
-    }
+    addableLists = { skills, interests };
+
+    initiate();
+    addPic();
+    addCapsule();
+    cancel();
+    save();
+    deleteAccount();
   });
 });
