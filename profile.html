@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mentor Match | Profile</title>
-    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png"> 
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,48 +18,55 @@
   <body>
     <!-- nav -->
     <nav>
-      <div class="logo"><a href="dashboard.html"><h1>Mentor Match</h1></a></div>
+      <div class="logo">
+        <a href="dashboard.html"><h1>Mentor Match</h1></a>
+      </div>
 
       <div class="nav-list">
-          <a class="active" href="#">Mentor Dashboard</a>
-          <a href="#">Contact</a>
+        <a href="#">Mentor Dashboard</a>
+        <a href="#">Contact</a>
       </div>
-          
+
       <div class="user-menu">
-          <!-- if logged in: ava + dropdown -->
-          <div class="logged-in hidden">
-              <div class="user-info">
-                  <img alt="User Avatar" id="user-avatar">
-                  <span class="username">Name</span>
-              </div>
-
-              <!-- dropdown menu -->
-              <div class="dropdown">
-                  <a href="profile.html">View Profile</a>
-                  <a href="profileedit.html">Edit Profile</a>
-                  <a id="logout-btn" href="#">Logout</a>
-              </div>
+        <!-- if logged in: ava + dropdown -->
+        <div class="logged-in hidden">
+          <div class="user-info">
+            <img alt="User Avatar" id="user-avatar" />
+            <span class="username">Name</span>
           </div>
 
-          <!-- if logged out: sign up / sign in -->
-          <div class="logged-out">
-              <a href="auth.html">Sign In / Sign Up</a>
+          <!-- dropdown menu -->
+          <div class="dropdown">
+            <a href="profile.html">View Profile</a>
+            <a href="profileedit.html">Edit Profile</a>
+            <a id="logout-btn" href="#">Logout</a>
           </div>
-      </div>  
-  </nav>
+        </div>
+
+        <!-- if logged out: sign up / sign in -->
+        <div class="logged-out">
+          <a href="auth.html">Sign In / Sign Up</a>
+        </div>
+      </div>
+    </nav>
 
     <!-- body -->
     <div class="whole-body">
       <div id="container">
         <!-- photo -->
         <div id="left">
-          <img id="img-preview" src="./assets/images/user.png" alt="User Avatar" class="user-avatar" />
+          <img
+            id="img-preview"
+            src="./assets/images/user.png"
+            alt="User Avatar"
+            class="user-avatar"
+          />
 
           <!-- name -->
           <div id="info" class="input-field">
             <div id="role-name">
               <div id="role"></div>
-              <div id="name"></div>  
+              <div id="name"></div>
             </div>
             <div id="bio"></div>
           </div>
@@ -67,30 +74,25 @@
 
         <!-- Other info -->
         <div id="right">
-
           <!-- Location -->
           <label for="location">Location</label>
           <div class="input-field" id="location"></div>
 
           <!-- Interest -->
           <label for="interests">Interests</label>
-          <div id="interests" class="input-field">
-          </div>
+          <div id="interests" class="input-field"></div>
 
           <!-- Skills -->
           <label for="skills">Skills</label>
-          <div id="skills" class="input-field">
-          </div>
+          <div id="skills" class="input-field"></div>
 
           <!-- Availability -->
           <label for="availability">Availability</label><br />
-          <div id="availability" class="input-field">
-          </div>
+          <div id="availability" class="input-field"></div>
 
           <!-- Connections: pagination-->
           <label for="connections">Your Connections</label><br />
-          <div id="connections" class="input-field">
-          </div>
+          <div id="connections" class="input-field"></div>
         </div>
       </div>
     </div>
@@ -98,7 +100,8 @@
     <!-- footer -->
     <footer>
       <p>&copy; 2025 Mentor Match. All rights reserved.</p>
-      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
+      <a href="#">Contact Us</a>
     </footer>
 
     <script type="module" src="./assets/js/common.js"></script>

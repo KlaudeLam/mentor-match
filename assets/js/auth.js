@@ -5,7 +5,8 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, signOut
+  signInWithEmailAndPassword,
+  signOut,
 } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
 
 // Log out
@@ -18,7 +19,7 @@ export const logOut = async () => {
     const errorMessage = error.message;
     alert(errorMessage);
   }
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   // toggle
@@ -38,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signinOpt.classList.remove("active-option");
     signupForm.classList.remove("hidden");
     signinForm.classList.add("hidden");
-  }
+  };
   const signinMode = () => {
     if (toggle === "signin") return;
     toggle = "signin";
@@ -47,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     signupOpt.classList.remove("active-option");
     signupForm.classList.add("hidden");
     signinForm.classList.remove("hidden");
-  }
+  };
 
   // Sign up/in functions
   const signup = () => {
@@ -55,11 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
       signupForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        const role = document.querySelector('input[name="role"]:checked')?.value;
+        const role = document.querySelector(
+          'input[name="role"]:checked'
+        )?.value;
         const name = document.querySelector("#name").value;
         const signupEmail = document.querySelector("#signup-email").value;
         const signupPassword = document.querySelector("#signup-password").value;
-        const confirmPassword = document.querySelector("#confirm-password").value;
+        const confirmPassword =
+          document.querySelector("#confirm-password").value;
 
         // password confirmation
         if (confirmPassword != signupPassword) {
@@ -78,17 +82,17 @@ document.addEventListener("DOMContentLoaded", () => {
           const user = userCredential.user;
 
           await setDoc(doc(db, "users", user.uid), {
-            "uid": user.uid,
-            "email": signupEmail,
+            uid: user.uid,
+            email: signupEmail,
             name,
-            "bio": "",
-            "location": "",
+            bio: "",
+            location: "",
             role,
-            "createdAt": new Date(),
-            "availability": [],
-            "skills": [],
-            "interests": [],
-            "img": "https://res.cloudinary.com/diib6xxxh/image/upload/v1745923865/user_y2g6ig.png"
+            createdAt: new Date(),
+            availability: [],
+            skills: [],
+            interests: [],
+            img: "https://res.cloudinary.com/diib6xxxh/image/upload/v1745923865/user_y2g6ig.png",
           });
 
           // alert and redirect
@@ -101,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
-  }
-  const signin = () =>{ 
+  };
+  const signin = () => {
     if (signinForm) {
       signinForm.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -128,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
-  }
+  };
 
   // Toggle form and button
   signinOpt.addEventListener("click", () => signinMode());

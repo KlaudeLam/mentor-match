@@ -99,20 +99,19 @@ document.addEventListener("DOMContentLoaded", (e) => {
   onAuthStateChanged(auth, async (user) => {
     const meta = getRouteMeta();
     if (user) {
-      if (meta?.requireGuest) {
-        // alert("You have already logged in");
-        window.location.href = "dashboard.html";
-      }
-
-      await updateLocalStorage();
+      // if (meta?.requireGuest) {
+      //   // alert("You have already logged in");
+      //   window.location.href = "dashboard.html";
+      // }
+      updateLocalStorage();
       loggedInMode();
       userData = user;
       if (typeof userReadyCallback === "function") userReadyCallback(userData);
     } else {
-      if (meta?.requireAuth) {
-        // alert("Please log in first");
-        window.location.href = "auth.html";
-      }
+      // if (meta?.requireAuth) {
+      //   // alert("Please log in first");
+      //   window.location.href = "auth.html";
+      // }
       loggedOutMode();
     }
   });
