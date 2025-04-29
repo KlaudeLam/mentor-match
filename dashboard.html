@@ -1,166 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mentor Match | Dashboard</title>
-    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png"> 
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/common.css">
-    <link rel="stylesheet" href="./assets/css/dashboard.css">
-
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/common.css" />
+    <link rel="stylesheet" href="./assets/css/dashboard.css" />
+  </head>
+  <body>
     <!-- nav -->
     <nav>
-        <div class="logo"><a href="dashboard.html"><h1>Mentor Match</h1></a></div>
+      <div class="logo">
+        <a href="dashboard.html"><h1>Mentor Match</h1></a>
+      </div>
 
-        <div class="nav-list">
-            <a class="active" href="#">Mentor Dashboard</a>
-            <a href="#">Contact</a>
+      <div class="nav-list">
+        <a class="active" href="dashboard.html">Mentor Dashboard</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div class="user-menu">
+        <!-- if logged in: ava + dropdown -->
+        <div class="logged-in hidden">
+          <div class="user-info">
+            <img alt="User Avatar" id="user-avatar" />
+            <span class="username">Name</span>
+          </div>
+
+          <!-- dropdown menu -->
+          <div class="dropdown">
+            <a href="profile.html">View Profile</a>
+            <a href="profileedit.html">Edit Profile</a>
+            <a id="logout-btn" href="#">Logout</a>
+          </div>
         </div>
-            
-        <div class="user-menu">
-            <!-- if logged in: ava + dropdown -->
-            <div class="logged-in hidden">
-                <div class="user-info">
-                    <img alt="User Avatar" id="user-avatar">
-                    <span class="username">Name</span>
-                </div>
 
-                <!-- dropdown menu -->
-                <div class="dropdown">
-                    <a href="profile.html">View Profile</a>
-                    <a href="profileedit.html">Edit Profile</a>
-                    <a id="logout-btn" href="#">Logout</a>
-                </div>
-            </div>
-
-            <!-- if logged out: sign up / sign in -->
-            <div class="logged-out">
-                <a href="auth.html">Sign In / Sign Up</a>
-            </div>
-        </div>  
+        <!-- if logged out: sign up / sign in -->
+        <div class="logged-out">
+          <a href="auth.html">Sign In / Sign Up</a>
+        </div>
+      </div>
     </nav>
-    
+
     <!-- body -->
     <div class="whole-body">
-        <!-- logged in: mentor appeared -->
-        <div class="logged-in hidden">
-            <!-- banner -->
-            <div class="banner">
-                <h1 class="cursor typewriter-animation">Welcome back, <span class="username"></span>!</h1>
-                <p>Here you can manage your mentoring sessions, view your mentees, and more.</p>
-            </div>
-
-            <!-- filter -->
-             <div class="filter">
-                <!-- filter -->
-                <div class="left-bar container">
-                    <h2>Filter</h2>
-                    <form class="filter-form" action="">
-                        <div class="filter-fields">
-                            <h3>I'm looking for...</h3>
-                            <div class="filter-options">
-                                <input type="radio" name="role" value="mentor" id="mentor">
-                                <label for="mentor">Mentor</label><br>
-                            </div>
-                            <div class="filter-options">
-                                <input type="radio" name="role" value="mentee" id="mentee">
-                                <label for="mentee">Mentee</label><br>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-fields">
-                            <h3>Skills</h3>
-                            <div class="filter-options">
-                                <input type="text" name="skills" id="skills"  class="text-input">
-                                <button>Add</button>
-                            </div>
-                        </div>
-
-                        <div class="filter-fields">
-                            <h3>Interests</h3>
-                            <div class="filter-options">
-                                <input type="text" name="interests" id="interests" class="text-input">
-                                <button>Add</button>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-fields">
-                            <h3>Location</h3>
-                            <div class="filter-options">
-                                <input type="text" name="location" id="location" class="text-input">
-                                <button>Add</button>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-fields">
-                            <h3>Availability</h3>
-                            <div class="filter-options">
-                                <input type="checkbox" name="availability" id="weekdays" value="weekdays">
-                                <label for="weekdays">Weekdays</label><br>
-                            </div>
-                            <div class="filter-options">
-                                <input type="checkbox" name="availability" id="weekend" value="weekend">
-                                <label for="weekend">Weekend</label><br>
-                            </div>
-                            <div class="filter-options">
-                                <input type="checkbox" name="availability" id="morning" value="morning">
-                                <label for="morning">Morning</label><br>
-                            </div>
-                            <div class="filter-options">
-                                <input type="checkbox" name="availability" id="evening" value="evening">
-                                <label for="evening">Evening</label><br>
-                            </div>
-                        </div>
-
-                        <!-- submit btn -->
-                        <div class="btns">
-                            <button type="reset" class="reset-button">Reset</button>
-                            <button type="submit" class="filter-button">Apply Filters</button>
-                        </div>                        
-                    </form>
-                    
-                </div>
-                
-                <!-- result -->
-                <div class="right-bar ">
-                    <div class="mentor-header container">
-                        <h1>Results</h1>
-                        <p>Find your mentors and mentees</p>
-                    </div>
-
-                    <div class="card-list">
-                        
-                    </div>
-                    
-                </div>
-             </div>
-            
+      <!-- logged in: mentor appeared -->
+      <div class="logged-in hidden">
+        <!-- banner -->
+        <div class="banner">
+          <h1 class="cursor typewriter-animation">
+            Welcome back, <span class="username"></span>!
+          </h1>
+          <p>
+            Here you can manage your mentoring sessions, view your mentees, and
+            more.
+          </p>
         </div>
 
-        <!-- logged out: sign in to search mentor -->
-        <div class="logged-out">
-            <div class="placeholder-container"> 
-                <h1>Welcome to Mentor Match!</h1>
-                <p>Please sign in to access your dashboard.</p>
-                <a class="auth-button" href="auth.html">Sign In / Sign Up</a>
+        <!-- filter -->
+        <div class="filter">
+          <!-- filter -->
+          <div class="left-bar container">
+            <h2>Filter</h2>
+            <form class="filter-form" action="">
+              <div class="filter-fields">
+                <h3>I'm looking for...</h3>
+                <div class="filter-options">
+                  <input type="radio" name="role" value="mentor" id="mentor" />
+                  <label for="mentor">Mentor</label><br />
+                </div>
+                <div class="filter-options">
+                  <input type="radio" name="role" value="mentee" id="mentee" />
+                  <label for="mentee">Mentee</label><br />
+                </div>
+              </div>
+
+              <div class="filter-fields">
+                <h3>Skills</h3>
+                <div class="filter-options">
+                  <input
+                    type="text"
+                    name="skills"
+                    id="skills"
+                    class="text-input"
+                  />
+                  <button>Add</button>
+                </div>
+              </div>
+
+              <div class="filter-fields">
+                <h3>Interests</h3>
+                <div class="filter-options">
+                  <input
+                    type="text"
+                    name="interests"
+                    id="interests"
+                    class="text-input"
+                  />
+                  <button>Add</button>
+                </div>
+              </div>
+
+              <div class="filter-fields">
+                <h3>Location</h3>
+                <div class="filter-options">
+                  <input
+                    type="text"
+                    name="location"
+                    id="location"
+                    class="text-input"
+                  />
+                  <button>Add</button>
+                </div>
+              </div>
+
+              <div class="filter-fields">
+                <h3>Availability</h3>
+                <div class="filter-options">
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    id="weekdays"
+                    value="weekdays"
+                  />
+                  <label for="weekdays">Weekdays</label><br />
+                </div>
+                <div class="filter-options">
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    id="weekend"
+                    value="weekend"
+                  />
+                  <label for="weekend">Weekend</label><br />
+                </div>
+                <div class="filter-options">
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    id="morning"
+                    value="morning"
+                  />
+                  <label for="morning">Morning</label><br />
+                </div>
+                <div class="filter-options">
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    id="evening"
+                    value="evening"
+                  />
+                  <label for="evening">Evening</label><br />
+                </div>
+              </div>
+
+              <!-- submit btn -->
+              <div class="btns">
+                <button type="reset" class="reset-button">Reset</button>
+                <button type="submit" class="filter-button">
+                  Apply Filters
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- result -->
+          <div class="right-bar">
+            <div class="mentor-header container">
+              <h1>Results</h1>
+              <p>Find your mentors and mentees</p>
             </div>
+
+            <div class="card-list"></div>
+          </div>
         </div>
+      </div>
+
+      <!-- logged out: sign in to search mentor -->
+      <div class="logged-out">
+        <div class="placeholder-container">
+          <h1>Welcome to Mentor Match!</h1>
+          <p>Please sign in to access your dashboard.</p>
+          <a class="auth-button" href="auth.html">Sign In / Sign Up</a>
+        </div>
+      </div>
     </div>
-    
+
     <!-- footer -->
     <footer>
-        <p>&copy; 2025 Mentor Match. All rights reserved.</p>
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact Us</a>
+      <p>&copy; 2025 Mentor Match. All rights reserved.</p>
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
+      <a href="#">Contact Us</a>
     </footer>
 
     <script type="module" src="./assets/js/common.js"></script>
     <script type="module" src="./assets/js/dashboard.js"></script>
-
-</body>
+  </body>
 </html>
